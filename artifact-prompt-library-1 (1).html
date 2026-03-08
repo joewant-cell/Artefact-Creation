@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Artifact Prompt Library</title>
+<style>
+  :root {
+    --bg: #f6f4f8;
+    --card: #ffffff;
+    --text: #1f1f24;
+    --muted: #666674;
+    --border: #e6e1ea;
+    --button: #4b2e83;
+    --button-hover: #3d256b;
+    --success: #1f7a4d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 48px auto;
+    padding: 0 20px;
+  }
+  h1 {
+    margin: 0 0 10px;
+    font-size: 32px;
+  }
+  p {
+    margin: 0 0 28px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .subtitle {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+  button {
+    appearance: none;
+    border: 0;
+    border-radius: 10px;
+    background: var(--button);
+    color: #fff;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    min-width: 140px;
+  }
+  button:hover {
+    background: var(--button-hover);
+  }
+  .status {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--success);
+    min-height: 18px;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>AI Artifact Prompt Library</h1>
+    <p>Upload the correct reference image in Copilot, then click a button below to copy the matching prompt.</p>
+
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="title">Purple Marble Artifact Prompt</div>
+          <div class="subtitle">Copies the final purple stone prompt.</div>
+        </div>
+        <button onclick="copyPrompt('purple')">Copy Prompt</button>
+      </div>
+      <div class="status" id="purple-status"></div>
+    </div>
+
+    <div class="card">
+      <div class="row">
+        <div>
+          <div class="title">Weathered Plaster Artifact Prompt</div>
+          <div class="subtitle">Copies the final plaster prompt.</div>
+        </div>
+        <button onclick="copyPrompt('plaster')">Copy Prompt</button>
+      </div>
+      <div class="status" id="plaster-status"></div>
+    </div>
+  </div>
+
+<script>
+const prompts = {
+  purple: `A 3D sculptural render of [OBJECT] designed as a minimalist archaeological artifact, closely referencing the attached image for the stone material, colour and surface characteristics.
+
+Entire object made from a single continuous deep purple marble stone material, including all elements — no glass, no metal, no plastic, no transparency, and no reflective surfaces. All details must appear carved from the same solid stone material.
+
+Stone material should match the violet-purple mineral tone with natural lilac variation and organic white geological veining seen in the reference image. Surface must appear matte and slightly weathered, with subtle mineral texture, natural stone variation and faint surface irregularities.
+
+Surface should include fine stone texture, light mineral erosion and small flaked areas, with edges slightly irregular and showing minor chipped corners and fractured planes, suggesting archaeological wear.
+
+Form should remain simplified and stylised, not overly rounded or overly polished.
+
+Lighting:
+Soft diffused studio lighting that gently reveals the stone texture.
+
+Composition:
+Floating object composition with no pedestal and no floor plane.
+
+Background:
+Fully transparent background. No gradient background or studio backdrop.
+
+Shadow rules:
+No cast shadow, no floor shadow, no drop shadow.
+
+Style:
+Contemporary museum artifact aesthetic, high resolution, soft ambient light, minimal color palette.
+
+Surface condition:
+Subtle edge wear, small fractured areas and natural stone imperfections.
+
+Export:
+Transparent PNG with alpha channel.`,
+  plaster: `A 3D sculptural render of [OBJECT], designed as a minimalist archaeological artifact.
+
+Material must resemble weathered plaster or dried chalk clay, with a powdery, matte mineral surface. Colour should be off-white to pale beige with subtle warm stone variation. No gloss, no polish, no ceramic shine, and no smooth plastic surface.
+
+Surface must show natural deterioration including:
+- fine crackle texture across the entire surface
+- powdery chalk dust appearance
+- small pits and porous mineral cavities
+- flaky chipped edges
+- brittle fractured areas
+- crumbly erosion along corners and edges
+
+Texture should feel dry, dusty, fragile, and mineral, similar to aged gypsum plaster, limestone powder, or archaeological cast fragments.
+
+The object should appear hand-formed or excavated, not machined or perfectly smooth. Edges slightly irregular with broken or flaked fragments.
+
+Lighting must be soft diffused museum-style lighting that reveals the surface texture without producing dramatic shadows.
+
+Composition:
+- floating object
+- no pedestal
+- no floor plane
+- object isolated in space
+
+Background:
+- fully transparent background
+- no background or gradient
+
+Shadow rules:
+- no cast shadow
+- no floor shadow
+- no drop shadow
+
+Style:
+- contemporary museum artifact aesthetic
+- photorealistic surface detail
+- high resolution
+- minimal colour palette
+
+Strict rules:
+- no gloss
+- no reflective surfaces
+- no polished marble
+- no ceramic look
+- no plastic appearance
+
+Surface roughness must be exaggerated so the material clearly reads as dry powdery plaster rather than smooth stone.
+
+Export:
+- transparent PNG with alpha channel`
+};
+
+async function copyPrompt(key) {
+  const status = document.getElementById(key + '-status');
+  try {
+    await navigator.clipboard.writeText(prompts[key]);
+    status.textContent = 'Copied to clipboard';
+    setTimeout(() => {
+      status.textContent = '';
+    }, 1800);
+  } catch (err) {
+    status.textContent = 'Copy failed. Please try again.';
+  }
+}
+</script>
+</body>
+</html>
