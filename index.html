@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Artifact Prompt Library</title>
+<title>Artefact Prompt Library</title>
 <style>
   :root {
     --bg: #f6f4f8;
@@ -86,13 +86,13 @@
 </head>
 <body>
   <div class="wrap">
-    <h1>AI Artifact Prompt Library</h1>
+    <h1>AI Artefact Prompt Library</h1>
     <p>Upload the correct reference image in Copilot, then click a button below to copy the matching prompt.</p>
 
     <div class="card">
       <div class="row">
         <div>
-          <div class="title">Purple Marble Artifact Prompt</div>
+          <div class="title">Purple Marble Artefact Prompt</div>
           <div class="subtitle">Copies the final purple stone prompt.</div>
         </div>
         <button onclick="copyPrompt('purple')">Copy Prompt</button>
@@ -103,7 +103,7 @@
     <div class="card">
       <div class="row">
         <div>
-          <div class="title">Weathered Plaster Artifact Prompt</div>
+          <div class="title">Weathered Plaster Artefact Prompt</div>
           <div class="subtitle">Copies the final plaster prompt.</div>
         </div>
         <button onclick="copyPrompt('plaster')">Copy Prompt</button>
@@ -114,11 +114,11 @@
 
 <script>
 const prompts = {
-  purple: `A 3D sculptural render of [OBJECT] designed as a minimalist archaeological artifact, closely referencing the attached image for the stone material, colour and surface characteristics.
+  purple: `A 3D sculptural render of [OBJECT] designed as a minimalist archaeological artefact, closely referencing the attached image as the primary guide for the stone material, colour, veining, texture and surface characteristics.
 
 Entire object made from a single continuous deep purple marble stone material, including all elements — no glass, no metal, no plastic, no transparency, and no reflective surfaces. All details must appear carved from the same solid stone material.
 
-Stone material should match the violet-purple mineral tone with natural lilac variation and organic white geological veining seen in the reference image. Surface must appear matte and slightly weathered, with subtle mineral texture, natural stone variation and faint surface irregularities.
+Stone material should match the violet-purple mineral tone with natural lilac variation and organic white geological veining seen in the reference image. Surface texture and finish should also follow the reference image, including the matte appearance, subtle mineral texture, natural stone variation and faint surface irregularities.
 
 Surface should include fine stone texture, light mineral erosion and small flaked areas, with edges slightly irregular and showing minor chipped corners and fractured planes, suggesting archaeological wear.
 
@@ -137,16 +137,16 @@ Shadow rules:
 No cast shadow, no floor shadow, no drop shadow.
 
 Style:
-Contemporary museum artifact aesthetic, high resolution, soft ambient light, minimal color palette.
+Contemporary museum artefact aesthetic, high resolution, soft ambient light, minimal color palette.
 
 Surface condition:
 Subtle edge wear, small fractured areas and natural stone imperfections.
 
 Export:
 Transparent PNG with alpha channel.`,
-  plaster: `A 3D sculptural render of [OBJECT], designed as a minimalist archaeological artifact.
+  plaster: `A 3D sculptural render of [OBJECT], designed as a minimalist archaeological artefact, closely referencing the attached image as the primary guide for the material colour, texture and surface characteristics.
 
-Material must resemble weathered plaster or dried chalk clay, with a powdery, matte mineral surface. Colour should be off-white to pale beige with subtle warm stone variation. No gloss, no polish, no ceramic shine, and no smooth plastic surface.
+Material must resemble weathered plaster or dried chalk clay, with a powdery, matte mineral surface. Colour should follow the uploaded reference image while remaining off-white to pale beige with subtle warm stone variation. Texture and finish should also follow the reference image. No gloss, no polish, no ceramic shine, and no smooth plastic surface.
 
 Surface must show natural deterioration including:
 - fine crackle texture across the entire surface
@@ -178,7 +178,7 @@ Shadow rules:
 - no drop shadow
 
 Style:
-- contemporary museum artifact aesthetic
+- contemporary museum artefact aesthetic
 - photorealistic surface detail
 - high resolution
 - minimal colour palette
